@@ -9,7 +9,29 @@
 
 <body>
   <h1><%= title %></h1>
-  <p>Welcome to <%= title %></p>
+  <h3>Bitte gib hier deinen Namen und deinen Wunsch ein:</h3>
+  <form action="/new" method="post">
+    <label for="name" id="nameLabel">Dein Name:</label>
+    <input name="name" type="text" id="name">
+    <br>
+    <label for="wish" id="wishLabel">Dein Wunsch:</label>
+    <input name="wish" type="text" id="wish">
+    <br>
+    <input type="submit" value="Speichern ">
+
+  </form>
+  <h3>oder suche nach existierenden Wünschen:</h3>
+  <form action="/wish" method="get">
+    <select name="name" id="select">
+      <% for (var i = 0; i < wishes.length; i++) { %>
+      <option value="<%= wishes[i].name %>">
+        <%= wishes[i].friendlyName %>
+      </option>
+      <% } %>
+    </select>
+    <br>
+    <input type="submit" value="Zeig mir den Wunsch">
+  </form>
 </body>
 
 </html>

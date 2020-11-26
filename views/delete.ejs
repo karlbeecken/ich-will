@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Wunsch löschen</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <h1>Wunsch löschen</h1>
+
+  <form action="/remove" method="post">
+    <select name="name" id="select">
+      <% for (var i = 0; i < wishes.length; i++) { %>
+      <option value="<%= wishes[i].name %>">
+        <%= wishes[i].friendlyName %>
+      </option>
+      <% } %>
+    </select>
+    <br>
+    <input type="submit" value="Löschen!">
+  </form>
+  <br>
+  <a href="/">Zurück zur Startseite</a>
+</body>
+
+</html>

@@ -5,4 +5,14 @@ body {
 
 a {
   color: #00B7FF;
+  margin-top: 5px;
+}
+
+input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#nameLabel {
+  padding-right: 13px;
 }
