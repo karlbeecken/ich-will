@@ -36,7 +36,7 @@
   <br>
   <form action="/wish" method="get">
     <div class="form-row">
-      <div class="col-3">
+      <div class="col-auto">
         <select name="name" id="select" class="form-control">
           <% for (var i = 0; i < wishes.length; i++) { %>
           <option value="<%= wishes[i].name %>">
@@ -45,7 +45,7 @@
           <% } %>
         </select>
       </div>
-      <div class="col-3">
+      <div class="col-auto">
         <input type="submit" value="Zeig mir den Wunsch" class="btn btn-primary">
       </div>
     </div>
