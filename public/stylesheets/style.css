@@ -1,18 +1,3 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-  margin-top: 5px;
-}
-
-input {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-#nameLabel {
-  padding-right: 13px;
 }

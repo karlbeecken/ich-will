@@ -3,35 +3,62 @@
 
 <head>
   <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
 <body>
   <h1><%= title %></h1>
+  <br>
   <h3>Bitte gib hier deinen Namen und deinen Wunsch ein:</h3>
+  <br>
   <form action="/new" method="post">
-    <label for="name" id="nameLabel">Dein Name:</label>
-    <input name="name" type="text" id="name">
+    <div class="form-group row">
+      <label for="name" id="nameLabel" class="col-sm-2 col-form-label">Dein Name:</label>
+      <div class="col-sm-3">
+        <input name="name" type="text" id="name" class="form-control">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="wish" id="wishLabel" class="col-sm-2 col-form-label">Dein Wunsch:</label>
+      <div class="col-sm-3">
+        <input name="wish" type="text" id="wish" class="form-control">
+      </div>
+    </div>
     <br>
-    <label for="wish" id="wishLabel">Dein Wunsch:</label>
-    <input name="wish" type="text" id="wish">
-    <br>
-    <input type="submit" value="Speichern ">
-
+    <input type="submit" value="Speichern" class="btn btn-primary">
   </form>
+  <br>
   <h3>oder suche nach existierenden Wünschen:</h3>
+  <br>
   <form action="/wish" method="get">
-    <select name="name" id="select">
-      <% for (var i = 0; i < wishes.length; i++) { %>
-      <option value="<%= wishes[i].name %>">
-        <%= wishes[i].friendlyName %>
-      </option>
-      <% } %>
-    </select>
-    <br>
-    <input type="submit" value="Zeig mir den Wunsch">
+    <div class="form-row">
+      <div class="col-3">
+        <select name="name" id="select" class="form-control">
+          <% for (var i = 0; i < wishes.length; i++) { %>
+          <option value="<%= wishes[i].name %>">
+            <%= wishes[i].friendlyName %>
+          </option>
+          <% } %>
+        </select>
+      </div>
+      <div class="col-3">
+        <input type="submit" value="Zeig mir den Wunsch" class="btn btn-primary">
+      </div>
+    </div>
   </form>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
