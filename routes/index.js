@@ -1,6 +1,12 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../db");
+var reCAPTCHA = require("recaptcha2");
+
+var recaptcha = new reCAPTCHA({
+  siteKey: '6LentfMZAAAAAFTGXPSC1Ux5kKpHW0WTpy6ViCxD', // retrieved during setup
+  secretKey: '6LentfMZAAAAAAiVgVh5V06OiUivdFSljbGWc_7x' // retrieved during setup
+});
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -17,8 +23,16 @@ router.get("/wish", function (req, res, next) {
 });
 
 router.post("/new", function (req, res, next) {
-  db.write(req.body.name, req.body.wish);
-  res.render("new", { wish: req.body.wish, name: req.body.name });
+  let key = req.body["g-recaptcha-response"];
+  recaptcha
+    .validate(key)
+    .then(function () {
+      db.write(req.body.name, req.body.wish);
+      res.render("new", { wish: req.body.wish, name: req.body.name });
+    })
+    .catch(function (errorCodes) {
+      console.error(recaptcha.translateErrors(errorCodes));
+    });
 });
 
 router.get("/delete", function (req, res, next) {
